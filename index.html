@@ -204,6 +204,8 @@ const TAGS=["all","record","track","live","installation","score","radio","sound 
 const TAGOPTS=["record","track","live","installation","score","radio","sound design"];
 const SORTS=[["date-desc","newest"],["date-asc","oldest"],["project","project"],["title","title"]];
 
+const ADMIN_UNLOCKED = new URLSearchParams(window.location.search).get('key')==='edit';
+const ADMIN_PASS = 'pdmpdmpdm';
 let filter="all", curIdx=-1, playing=false, prog=0, sortI=0, editMode=false;
 const openSet={};
 let openOrder=[];
@@ -448,6 +450,7 @@ function renderFilters(){
 }
 function renderTopRight(){
   const tr=document.getElementById('topright');
+  if(!ADMIN_UNLOCKED){ tr.innerHTML=''; return; }
   let html='';
   if(editMode){
     html+=`<span class="lnk" id="sortbtn">sort: ${SORTS[sortI][1]}</span>`;
@@ -459,7 +462,13 @@ function renderTopRight(){
     document.getElementById('sortbtn').addEventListener('click',()=>{ sortI=(sortI+1)%SORTS.length; render(); });
     document.getElementById('exportbtn').addEventListener('click',()=>{ buildExport(); panel.classList.add('open'); });
   }
-  document.getElementById('editmode').addEventListener('click',()=>{ editMode=!editMode; render(); });
+  document.getElementById('editmode').addEventListener('click',()=>{
+    if(!editMode){
+      const p=prompt('passphrase:');
+      if(p!==ADMIN_PASS){ if(p!==null) alert('wrong passphrase'); return; }
+    }
+    editMode=!editMode; render();
+  });
 }
 
 /* ---------- export / import / full page ---------- */
