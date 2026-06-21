@@ -314,7 +314,7 @@ function layoutRows(){
 
 function cardInner(i,mode){
   const w=WORKS[i];
-  const head=`<div class="chead"><span class="ctitle">${esc(w.t)||'untitled'}</span><span class="chacts"><span class="ctog">${mode==='edit'?'view':'edit'}</span><span class="cx">close</span></span></div>`;
+  const head=`<div class="chead"><span class="ctitle">${esc(w.t)||'untitled'}</span><span class="chacts">${editMode?`<span class="ctog">${mode==='edit'?'view':'edit'}</span>`:''}<span class="cx">close</span></span></div>`;
   if(mode==='edit'){
     const show=w.show||{};
     return head+`
@@ -355,9 +355,10 @@ function cardInner(i,mode){
 }
 
 function bindCard(card,i){
-  card.querySelector('.ctog').addEventListener('click',()=>{ openSet[i].mode=openSet[i].mode==='edit'?'view':'edit'; render(); });
+  const ctog=card.querySelector('.ctog');
+  if(ctog) ctog.addEventListener('click',()=>{ openSet[i].mode=openSet[i].mode==='edit'?'view':'edit'; render(); });
   card.querySelector('.cx').addEventListener('click',()=>{ closeEntry(i); render(); });
-  if(openSet[i].mode!=='edit') return;
+  if(!editMode||openSet[i].mode!=='edit') return;
   card.querySelectorAll('[data-f]').forEach(inp=>inp.addEventListener('input',()=>{
     const f=inp.dataset.f;
     if(f==='imagesText'){ WORKS[i].images=inp.value.split('\n').map(s=>s.trim()).filter(Boolean); return; }
@@ -466,6 +467,8 @@ function renderTopRight(){
     if(!editMode){
       const p=prompt('passphrase:');
       if(p!==ADMIN_PASS){ if(p!==null) alert('wrong passphrase'); return; }
+    } else {
+      openOrder.forEach(k=>{ if(openSet[k]) openSet[k].mode='view'; });
     }
     editMode=!editMode; render();
   });
