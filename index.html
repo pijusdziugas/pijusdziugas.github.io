@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDM — index</title>
+<title>PDM - Pijus Džiugas Meižis</title>
+<meta name="description" content="Pijus Džiugas Meižis (PDM) - composer and sound artist, Vilnius. Records, live sets, sound installations, film scores, sound design.">
+<meta property="og:title" content="PDM - Pijus Džiugas Meižis">
+<meta property="og:description" content="Composer and sound artist, Vilnius. Records, live sets, installations, scores.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pijusdziugas.github.io/">
+<meta property="og:image" content="https://f4.bcbits.com/img/a0823604804_10.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316130f'/%3E%3Ctext x='16' y='23' font-family='Times New Roman,serif' font-size='20' font-weight='bold' fill='%23f4f1e8' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
 <style>
   :root{ --paper:#f4f1e8; --ink:#16130f; --mut:#8c8678; --line:#cfc7b5; --serif:"Times New Roman", Times, Georgia, serif; }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -51,6 +59,8 @@
   .media iframe.bc{aspect-ratio:auto;max-width:100%;max-height:520px}
   .media .art{display:inline-block;border:1px solid var(--ink);box-shadow:3px 4px 0 rgba(0,0,0,.12)}
   .media .art img{width:100%;display:block;max-width:280px}
+  .media.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+  .media.gal img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border:1px solid var(--ink)}
   .cnote{font-size:14px;line-height:1.55;margin-bottom:10px;white-space:pre-wrap}
   .cnote a{text-decoration:underline;text-underline-offset:2px}
   .clinks{font-size:13px}
@@ -90,6 +100,8 @@
   .pop.open{opacity:1;transform:none;pointer-events:auto}
   .pop::after{content:"";position:absolute;right:46px;bottom:-13px;width:0;height:0;border:13px solid transparent;border-bottom:0;border-top-color:var(--ink)}
   .pop::before{content:"";position:absolute;right:48px;bottom:-9px;width:0;height:0;border:11px solid transparent;border-bottom:0;border-top-color:var(--paper);z-index:1}
+  .copymail{cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  .copymail:hover{background:var(--ink);color:var(--paper);text-decoration:none}
   .pop .say{font-size:13px;line-height:1.5;margin-bottom:10px}
   .pop input,.pop textarea{width:100%;font-family:var(--serif);font-size:14px;border:1px solid var(--line);padding:7px 8px;margin-bottom:8px;background:#fff}
   .pop textarea{min-height:62px;resize:vertical}
@@ -110,6 +122,7 @@
   .exp{width:100%;height:240px;font-family:ui-monospace,monospace;font-size:12px;padding:8px;border:1px solid var(--line);background:#fff;color:#111}
   .pbox .pclose{margin-left:auto;cursor:pointer;text-decoration:underline}
  
+  @media(max-width:560px){ .txt{white-space:normal} body{padding:0 16px 60px} .footer{padding:9px 16px} }
   @media(prefers-reduced-motion:reduce){*{transition:none}}
 </style>
 </head>
@@ -128,19 +141,22 @@
     <span class="time" id="time">0:00 / 0:00</span>
   </span>
   <span class="right">
+    <span class="lnk" id="aboutbtn">about</span>
     <span class="lnk" id="connectbtn">connect</span>
     <span class="pdmwrap"><span class="support">support</span><span class="lnk pdm" id="home">PDM</span></span>
   </span>
 </div>
  
 <div class="pop" id="pop">
-  <p class="say">Commissions, scores, installations &mdash; or just tell me what you heard. I read everything.</p>
-  <input id="cemail" placeholder="your email">
-  <textarea id="cmsg" placeholder="message"></textarea>
-  <div class="popfoot">
-    <span class="send" id="sendbtn">send</span>
-    <span class="poplinks"><a id="iglink" href="https://www.instagram.com/pijus_dziugas" target="_blank" rel="noopener">instagram</a><a id="bclink" href="https://pijusdziugas.bandcamp.com" target="_blank" rel="noopener">bandcamp</a></span>
+  <p class="say">Open for commissions: film scores, sound design, installations, live sets. Or just tell me what you heard.</p>
+  <div class="poplinks" style="text-align:left;flex-direction:column;gap:4px">
+    <span><span class="copymail" id="copymail" title="click to copy">pijus.dziugas@gmail.com</span> <span class="light" id="copied" style="font-size:12px"></span></span>
+    <span style="display:flex;gap:14px"><a href="https://www.instagram.com/pijus_dziugas" target="_blank" rel="noopener">instagram</a><a href="https://pijusdziugas.bandcamp.com" target="_blank" rel="noopener">bandcamp</a></span>
   </div>
+</div>
+<div class="pop" id="aboutpop">
+  <p class="say">Pijus Džiugas Meižis (PDM) - composer and sound artist based in Vilnius. Electroacoustic music, sound installations, film scores and live sets, made with a narrow set of tools: drum machine, Nord Micromodular, sampling, tape and a spatial-diffusion instrument built in Max/MSP.</p>
+  <p class="say" style="margin-bottom:0">Other projects: IXOJI (with Rakelė Chijenaitė), Münpauzn, AMORA LAMOR. Studio at Retrito Smarsas.</p>
 </div>
  
 <div class="panel" id="panel"><div class="pbox">
@@ -153,7 +169,7 @@
     <span class="ebtn" id="dlpagebtn">download full page</span>
     <span class="pclose" id="pclose">close</span>
   </div>
-  <p class="hint">Paste new content over the box below and hit "import from box" to load it \u2014 or upload a .txt. "download full page" gives you the complete file, ready to upload wherever this one lives.</p>
+  <p class="hint">Paste new content over the box below and hit "import from box" to load it - or upload a .txt. "download full page" gives you the complete file, ready to upload wherever this one lives.</p>
   <textarea class="exp" id="exp"></textarea>
   <input type="file" id="fileinput" accept=".txt,.json,text/plain" style="display:none">
 </div></div>
@@ -161,7 +177,7 @@
 <script>
 const ORIGINAL_HTML = document.documentElement.outerHTML;
 const WORKS = [
-  {pr:"IXOJI", t:"Traxedia", tag:"record", y:"2024", note:"First long-form thing under the Ixoji name. Stitched from a winter of late dictaphone takes — kept the hiss in.", video:"", bandcamp:"", color:"", links:[{"label":"bandcamp","url":"#"},{"label":"spotify","url":"#"}]},
+  {pr:"IXOJI", t:"Traxedia", tag:"record", y:"2024", note:"", video:"", bandcamp:"", color:""},
   {pr:"Pijus Džiugas Meižis", t:"Gegužės Gūsiai", tag:"record", y:"2021", note:"", video:"", bandcamp:"<iframe style=\"border: 0; width: 100%; height: 241px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=1859071781/size=large/bgcol=ffffff/linkcol=0687f5/artwork=none/transparent=true/\" seamless><a href=\"https://pijusdziugas.bandcamp.com/album/gegu-s-g-siai\">gegužės gūsiai by Pijus Džiugas Meižis</a></iframe>", color:"", images:["https://f4.bcbits.com/img/a1193662043_10.jpg","https://f4.bcbits.com/img/0025055782_10.jpg"]},
   {pr:"Pijus Džiugas Meižis", t:"Delsa", tag:"record", y:"2021", note:"cassette", video:"", bandcamp:"<iframe style=\"border: 0; width: 350px; height: 274px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=621287711/size=large/bgcol=ffffff/linkcol=333333/artwork=none/transparent=true/\" seamless><a href=\"https://pijusdziugas.bandcamp.com/album/delsa\">delsa by Pijus Džiugas Meižis</a></iframe>", color:"", images:["https://f4.bcbits.com/img/a1528111021_10.jpg","https://f4.bcbits.com/img/0023948268_10.jpg","https://f4.bcbits.com/img/0023948264_10.jpg"]},
   {pr:"Pijus Džiugas Meižis", t:"Geografinės Būsenos", tag:"record", y:"2020", note:"", video:"", bandcamp:"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=3637221511/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/\" seamless><a href=\"https://pijusdziugas.bandcamp.com/album/geografin-s-b-senos\">Geografinės būsenos by Pijus Džiugas Meižis</a></iframe>", color:"", images:["https://f4.bcbits.com/img/a1998172058_10.jpg","https://f4.bcbits.com/img/0019311011_10.jpg","https://f4.bcbits.com/img/0019311012_10.jpg"]},
@@ -171,21 +187,22 @@ const WORKS = [
   {pr:"Münpauzn", t:"Dark Side of the Mün", tag:"record", y:"2015", note:"", video:"", bandcamp:"<iframe style=\"border: 0; width: 100%; height: 406px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=2948500810/size=large/bgcol=ffffff/linkcol=de270f/artwork=none/transparent=true/\" seamless><a href=\"https://munpauzn.bandcamp.com/album/the-dark-side-of-the-m-n\">The Dark Side Of The Mün by Münpauzn</a></iframe>", color:"", images:["https://f4.bcbits.com/img/a3299310606_10.jpg"]},
   {pr:"Mesijus x Münpauzn", t:"Piurė Futurė", tag:"record", y:"2014", note:"", video:"", bandcamp:"", color:""},
   {pr:"Münpauzn", t:"Morning EP", tag:"record", y:"2013", note:"", video:"", bandcamp:"", color:""},
-  {pr:"PDM", t:"Leslie is Leavin' @ Retrito Smarsas", tag:"live", y:"2025", note:"lo-fi recording of a set I played in my favourite place", video:"https://youtu.be/xEEkFZyP814", bandcamp:"", color:""},
+  {pr:"PDM", t:"Leslie is Leavin' @ Retrito Smarsas", tag:"live", y:"2025", note:"lo-fi recording of a set I played in my favourite place", video:"https://youtu.be/xEEkFZyP814", bandcamp:"", color:"", tpl:"{pr} {tag}: {t}"},
   {pr:"PDM", t:"Braile Satelite", tag:"live", y:"2025 07", note:"", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Common Clock", tag:"live", y:"2024 05", note:"Saturday afternoon synthesizer improvisations.\nA warm gathering with local synthesists playing together for a few hours sharing a common clock signal.", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Synap", tag:"live", y:"2024 02", note:"", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Studium P", tag:"live", y:"2024 01", note:"", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Bronshoj Vandtarn", tag:"live", y:"2022 06", note:"", video:"", bandcamp:"", color:""},
-  {pr:"PDM", t:"Spiečius @ KKC", tag:"live", y:"", note:"", video:"", bandcamp:"", color:""},
+  {pr:"PDM", t:"Spiečius @ KKC", tag:"live", y:"", note:"", video:"", bandcamp:"", color:"", tpl:"{pr} {tag}: {t}"},
   {pr:"IXOJI", t:"Kirtimų Kultūros Centras", tag:"live", y:"2023", note:"", video:"https://www.youtube.com/watch?v=YYRG3uIDg5o", bandcamp:"", color:""},
-  {pr:"IXOJI", t:"Method, Sound & Silence @ Sodas2123", tag:"live", y:"2025-11", note:"IXOJI played a nice show in a beautiful setting.\n-\nHad this idea of having a floating glass pool that would vibrate cymaticaly and together with light passing through, create a subtle visualisation for the music.\nadd photo album", video:"", bandcamp:"", color:""},
+  {pr:"IXOJI", t:"Method, Sound & Silence @ Sodas2123", tag:"live", y:"2025-11", note:"IXOJI played a nice show in a beautiful setting.\n-\nHad this idea of having a floating glass pool that would vibrate cymatically and together with light passing through, create a subtle visualisation for the music.", video:"", bandcamp:"", color:"", tpl:"{pr} {tag}: {t}"},
   {pr:"Pijus Džiugas Meižis", t:"Flegmant / Focus", tag:"track", y:"2020", note:"", video:"", bandcamp:"<iframe style=\"border: 0; width: 350px; height: 470px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=4254638669/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/\" seamless><a href=\"https://pijusdziugas.bandcamp.com/album/flegmant-focus\">Flegmant / Focus by Pijus Džiugas Meižis</a></iframe>", color:""},
-  {pr:"PDM", t:"Nėra Laiko", tag:"radio", y:"2021", note:"A monthly show on Radio Vilnius where I play nice music\nCheck all episodes here: https://radiovilnius.live/category/shows/nera-laiko/", video:"", bandcamp:"", color:""},
-  {pr:"PDM", t:"PDM Kit for Perkons HD-01 drum machine", tag:"sound design", y:"2025 12", note:"Met with Kodek in Jurmala to hang. After witnessing his collection of bb guns, sound devices and prototypes he was working on I asked if he had some work for me.\nNext day I took a train to Erica's HQ in Riga to get a black Perkons to take with me. \nIn the next couple months- I learned using it and made a KIT of sounds and patterns that you can download and use it if you have the machine. This kit is an exploration of PERKONS tempoharmonic capabilities.\nhttps://www.ericasynths.lv/news/post/perkons-kit-pack-3-out/\n", video:"https://www.youtube.com/watch?v=pnP21PyqIJU", bandcamp:"", color:""},
-  {pr:"Pijus Džiugas Meižis", t:"PLX Tjärö ", tag:"installation", y:"2022", note:"played for four hours straight for people who pass by the rock.\nused modular.", video:"", bandcamp:"", color:""},
+  {pr:"PDM", t:"Nėra Laiko", tag:"radio", y:"2021", note:"A monthly show on Radio Vilnius where I played nice music, 2021-2024.\nAll episodes: https://radiovilnius.live/category/shows/nera-laiko/", video:"", bandcamp:"", color:""},
+  {pr:"PDM", t:"PDM Kit for Perkons HD-01 drum machine", tag:"sound design", y:"2025 12", note:"Met with Kodek in Jurmala to hang. After witnessing his collection of bb guns, sound devices and prototypes he was working on I asked if he had some work for me.\nNext day I took a train to Erica Synths HQ in Riga to get a black Perkons to take with me. \nIn the next couple months- I learned using it and made a KIT of sounds and patterns that you can download and use it if you have the machine. This kit is an exploration of PERKONS tempoharmonic capabilities.\nhttps://www.ericasynths.lv/news/post/perkons-kit-pack-3-out/\n", video:"https://www.youtube.com/watch?v=pnP21PyqIJU", bandcamp:"", color:""},
+  {pr:"Pijus Džiugas Meižis", t:"PLX Tjärö", tag:"installation", y:"2022", note:"played for four hours straight for people who pass by the rock.\nused modular.", video:"", bandcamp:"", color:""},
   {pr:"Pijus Džiugas Meižis", t:"Jūra", tag:"score", y:"2025", note:"Theme song for a four part radio essay on [LRT Radio](https://www.lrt.lt/radioteka/irasas/2000537040/premjera-jura-i-dalis)", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Naiku", tag:"score", y:"2023", note:"Short film directed by Pijus Mačiulskis.\n\nAdomas encounters a group of hooligans tearing through streets in a car. Drawn into a violent tournament with an unusual trophy at stake, Adomas finds his morals shifting.\n", video:"https://www.youtube.com/watch?v=bX7grKPlMc4", bandcamp:"", color:"#ddd2da"},
+  {pr:"PDM", t:"pakibusi", tag:"installation", y:"", note:"", video:"", bandcamp:"", color:"", images:[], hidden:true},
   {pr:"PDM", t:"non-ergodic", tag:"installation", y:"2026", note:"", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Siluetas", tag:"sound design", y:"2024 05", note:"a video by Andrey Motorichev", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Energija", tag:"installation", y:"", note:"", video:"", bandcamp:"", color:""},
@@ -195,8 +212,8 @@ const WORKS = [
   {pr:"IXOJI", t:"Dice-Ching-O-Mat", tag:"score", y:"2026", note:"Feature film directed by Kristijonas Vildžiūnas", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Azartas", tag:"installation", y:"2023", note:"", video:"", bandcamp:"", color:"", hidden:true},
   {pr:"PDM", t:"Paupio gidas", tag:"score", y:"2022", note:"", video:"", bandcamp:"", color:"", hidden:true},
-  {pr:"PDM", t:"Kino Pavasaris", tag:"sound design", y:"2022", note:"https://www.youtube.com/watch?v=JQ7l3xTgzCg", video:"", bandcamp:"", color:"", hidden:true},
-  {pr:"Pijus Džiugas Meižis", t:"Sinefilija", tag:"score", y:"2021", note:"A feature film directed by Algimantas Puipa ", video:"", bandcamp:"", color:""},
+  {pr:"PDM", t:"Kino Pavasaris", tag:"sound design", y:"2022", note:"", video:"https://www.youtube.com/watch?v=JQ7l3xTgzCg", bandcamp:"", color:"", hidden:true},
+  {pr:"Pijus Džiugas Meižis", t:"Sinefilija", tag:"score", y:"2021", note:"A feature film directed by Algimantas Puipa", video:"", bandcamp:"", color:""},
   {pr:"PDM", t:"Maladaptive Daydreamers", tag:"score", y:"2022", note:"Short film by Emilija Povilanskaitė", video:"", bandcamp:"", color:""},
   {pr:"Münpauzn", t:"PUER Simpler", tag:"record", y:"2025 06", note:"", video:"", bandcamp:"<iframe style=\"border: 0; width: 100%; height: 406px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=423791970/size=large/bgcol=ffffff/linkcol=0687f5/artwork=none/transparent=true/\" seamless><a href=\"https://munpauzn.bandcamp.com/album/puer-simpler\">PUER Simpler by Münpauzn</a></iframe>", color:"", images:["https://f4.bcbits.com/img/a0823604804_10.jpg"]},
 ];
@@ -204,6 +221,8 @@ const TAGS=["all","record","track","live","installation","score","radio","sound 
 const TAGOPTS=["record","track","live","installation","score","radio","sound design"];
 const SORTS=[["date-desc","newest"],["date-asc","oldest"],["project","project"],["title","title"]];
  
+const PLAYER_ON = false; // set to true when there is real audio to play
+if(!PLAYER_ON) document.querySelector('.footer .left').style.visibility='hidden';
 const ADMIN_UNLOCKED = new URLSearchParams(window.location.search).get('key')==='edit';
 const ADMIN_PASS = 'pdmpdmpdm';
 let filter="all", curIdx=-1, playing=false, prog=0, sortI=0, editMode=false;
@@ -273,7 +292,7 @@ function openEntry(i){
 function closeEntry(i){ if(openSet[i]){ delete openSet[i]; const k=openOrder.indexOf(i); if(k>-1) openOrder.splice(k,1); } }
 function toggle(i){ if(i===curIdx){ playing=!playing; } else { curIdx=i; playing=true; prog=0; } }
 function nameClick(i){
-  toggle(i);
+  if(PLAYER_ON) toggle(i);
   if(openSet[i]) closeEntry(i); else openEntry(i);
   render();
 }
@@ -325,7 +344,7 @@ function cardInner(i,mode){
         <select class="cin" data-f="tag">${TAGOPTS.map(t=>`<option ${t===w.tag?'selected':''}>${t}</option>`).join('')}</select>
       </div>
       <div class="grow"><span class="grename" data-gf="pr">rename artist everywhere</span><span class="grename" data-gf="tag">rename tag everywhere</span></div>
-      <input class="cin" data-f="tpl" value="${esc(w.tpl||defaultTpl(w.tag))}" placeholder="name format \u2014 {t} title, {pr} artist, {tag} type">
+      <input class="cin" data-f="tpl" value="${esc(w.tpl||defaultTpl(w.tag))}" placeholder="name format - {t} title, {pr} artist, {tag} type">
       <textarea class="cta" data-f="note" placeholder="personal note / diary / description">${esc(w.note)}</textarea>
       <span class="mklink">make link</span>
       <input class="cin" data-f="video" value="${esc(w.video)}" placeholder="youtube video url">
@@ -343,14 +362,15 @@ function cardInner(i,mode){
   let media='';
   if(show.media!==false){
     const imgs=entryImages(w);
-    if(imgs.length){ const rot=(Math.random()*3-1.5).toFixed(2); media+=`<div class="media"><div class="art" style="transform:rotate(${rot}deg)"><img src="${esc(imgs[0])}" alt=""></div></div>`; }
+    if(imgs.length===1||(imgs.length&&w.tag==='record')){ const rot=(Math.random()*3-1.5).toFixed(2); media+=`<div class="media"><div class="art" style="transform:rotate(${rot}deg)"><img src="${esc(imgs[0])}" alt=""></div></div>`; }
+    else if(imgs.length>1){ media+=`<div class="media gal">${imgs.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy"></a>`).join('')}</div>`; }
     if(w.video){ const id=ytId(w.video); if(id) media+=`<div class="media"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" allowfullscreen></iframe></div><div class="clinks"><a href="https://youtu.be/${id}" target="_blank" rel="noopener">open on youtube \u2197</a></div>`; }
     const bc=bcSrc(w.bandcamp); if(bc) media+=`<div class="media"><iframe class="bc" src="${bc}" seamless></iframe></div>`;
   }
   const specs=(show.specs!==false)?`<div class="cspecs">${[w.pr,w.tag,dispYear(w.y)].filter(Boolean).join(' \u00b7 ')}</div>`:'';
   const note=(show.note!==false&&w.note)?`<div class="cnote">${renderNote(w.note)}</div>`:'';
   const links=(show.links!==false&&w.links&&w.links.length)?`<div class="clinks">${w.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join(' \u00b7 ')}</div>`:'';
-  const empty=(!media&&!note&&!links)?`<div class="cnote" style="color:#5a554a">No notes yet \u2014 click edit to add.</div>`:'';
+  const empty=(editMode&&!media&&!note&&!links)?`<div class="cnote" style="color:#5a554a">No notes yet - click edit to add.</div>`:'';
   return head+specs+media+note+links+empty;
 }
  
@@ -516,7 +536,7 @@ function importData(text){
     render();
     alert('Imported '+WORKS.length+' entries.');
   }catch(err){
-    alert('Could not read that as work data \u2014 paste the same format export gives you (starting with "const WORKS = [").');
+    alert('Could not read that as work data - paste the same format export gives you (starting with "const WORKS = [").');
   }
 }
 function buildFullPage(){
@@ -554,7 +574,7 @@ document.getElementById('copybtn').addEventListener('click',async()=>{ const b=d
   catch(e){ exp.focus(); exp.select(); try{document.execCommand('copy');b.textContent='copied!';}catch(_){b.textContent='press Cmd/Ctrl+C';} }
   setTimeout(()=>b.textContent='copy',1500); });
 document.getElementById('dlbtn').addEventListener('click',()=>{ try{ const b=new Blob([exp.value],{type:'text/plain'}); const a=document.createElement('a');
-  a.href=URL.createObjectURL(b); a.download='pdm-works.txt'; document.body.appendChild(a); a.click(); a.remove(); }catch(e){ alert('Download blocked here \u2014 use copy.'); } });
+  a.href=URL.createObjectURL(b); a.download='pdm-works.txt'; document.body.appendChild(a); a.click(); a.remove(); }catch(e){ alert('Download blocked here - use copy.'); } });
 document.getElementById('dlpagebtn').addEventListener('click',()=>{ try{
   const html='<!DOCTYPE html>\n'+buildFullPage();
   const b=new Blob([html],{type:'text/html'}); const a=document.createElement('a');
@@ -562,9 +582,13 @@ document.getElementById('dlpagebtn').addEventListener('click',()=>{ try{
   }catch(e){ alert('Download blocked here.'); } });
  
 const pop=document.getElementById('pop');
-document.getElementById('connectbtn').addEventListener('click',()=>pop.classList.toggle('open'));
-document.getElementById('sendbtn').addEventListener('click',()=>{ const em=document.getElementById('cemail').value, msg=document.getElementById('cmsg').value;
-  window.location.href='mailto:pijus.dziugas@gmail.com?subject='+encodeURIComponent('via pdm.site')+'&body='+encodeURIComponent(msg+'\n\n— '+em); });
+const aboutpop=document.getElementById('aboutpop');
+document.getElementById('connectbtn').addEventListener('click',()=>{ aboutpop.classList.remove('open'); pop.classList.toggle('open'); });
+document.getElementById('aboutbtn').addEventListener('click',()=>{ pop.classList.remove('open'); aboutpop.classList.toggle('open'); });
+document.getElementById('copymail').addEventListener('click',async()=>{ const c=document.getElementById('copied');
+  try{ await navigator.clipboard.writeText('pijus.dziugas@gmail.com'); c.textContent='copied'; }catch(e){ c.textContent='select and copy'; }
+  setTimeout(()=>c.textContent='',1600); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ pop.classList.remove('open'); aboutpop.classList.remove('open'); } });
  
 render();
 </script>
