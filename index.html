@@ -90,9 +90,6 @@
   .footer .now .ttl{font-weight:normal;font-style:normal}
   .footer .time{opacity:.6;font-variant-numeric:tabular-nums;white-space:nowrap}
   .footer .pdm{font-weight:bold;font-size:19px;letter-spacing:.02em}
-  .pdmwrap{position:relative;display:inline-flex}
-  .pdmwrap .support{position:absolute;right:0;bottom:100%;font-size:11px;color:var(--mut);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
-  .pdmwrap:hover .support{opacity:1}
  
   .pop{position:fixed;right:18px;bottom:56px;z-index:900;width:320px;max-width:calc(100vw - 36px);
     background:var(--paper);border:2px solid var(--ink);padding:14px;
@@ -141,22 +138,18 @@
     <span class="time" id="time">0:00 / 0:00</span>
   </span>
   <span class="right">
-    <span class="lnk" id="aboutbtn">about</span>
     <span class="lnk" id="connectbtn">connect</span>
-    <span class="pdmwrap"><span class="support">support</span><span class="lnk pdm" id="home">PDM</span></span>
+    <span class="lnk pdm" id="home">PDM</span>
   </span>
 </div>
  
 <div class="pop" id="pop">
+  <p class="say">Pijus Džiugas Meižis (PDM) - composer and sound artist based in Vilnius.</p>
   <p class="say">Open for commissions: film scores, sound design, installations, live sets. Or just tell me what you heard.</p>
   <div class="poplinks" style="text-align:left;flex-direction:column;gap:4px">
     <span><span class="copymail" id="copymail" title="click to copy">pijus.dziugas@gmail.com</span> <span class="light" id="copied" style="font-size:12px"></span></span>
     <span style="display:flex;gap:14px"><a href="https://www.instagram.com/pijus_dziugas" target="_blank" rel="noopener">instagram</a><a href="https://pijusdziugas.bandcamp.com" target="_blank" rel="noopener">bandcamp</a></span>
   </div>
-</div>
-<div class="pop" id="aboutpop">
-  <p class="say">Pijus Džiugas Meižis (PDM) - composer and sound artist based in Vilnius. Electroacoustic music, sound installations, film scores and live sets, made with a narrow set of tools: drum machine, Nord Micromodular, sampling, tape and a spatial-diffusion instrument built in Max/MSP.</p>
-  <p class="say" style="margin-bottom:0">Other projects: IXOJI (with Rakelė Chijenaitė), Münpauzn, AMORA LAMOR. Studio at Retrito Smarsas.</p>
 </div>
  
 <div class="panel" id="panel"><div class="pbox">
@@ -582,13 +575,11 @@ document.getElementById('dlpagebtn').addEventListener('click',()=>{ try{
   }catch(e){ alert('Download blocked here.'); } });
  
 const pop=document.getElementById('pop');
-const aboutpop=document.getElementById('aboutpop');
-document.getElementById('connectbtn').addEventListener('click',()=>{ aboutpop.classList.remove('open'); pop.classList.toggle('open'); });
-document.getElementById('aboutbtn').addEventListener('click',()=>{ pop.classList.remove('open'); aboutpop.classList.toggle('open'); });
+document.getElementById('connectbtn').addEventListener('click',()=>pop.classList.toggle('open'));
 document.getElementById('copymail').addEventListener('click',async()=>{ const c=document.getElementById('copied');
   try{ await navigator.clipboard.writeText('pijus.dziugas@gmail.com'); c.textContent='copied'; }catch(e){ c.textContent='select and copy'; }
   setTimeout(()=>c.textContent='',1600); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ pop.classList.remove('open'); aboutpop.classList.remove('open'); } });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ pop.classList.remove('open'); } });
  
 render();
 </script>
